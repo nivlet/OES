@@ -18,6 +18,56 @@ Class cOrderDtlDataDictionary is a DataDictionary
         Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
 
+        Set Field_Option Field OrderDtl.Order_Number DD_NOPUT to True
+
+        Set Field_Option Field OrderDtl.Detail_Number DD_NOPUT to True
+        Set Field_Auto_Increment Field OrderDtl.Detail_Number to File_Field OrderHea.Last_Detail_Num
+
+        Set Field_Mask_Type Field OrderDtl.Qty_Ordered to Mask_Numeric_Window
+
+        Set Field_Mask_Type Field OrderDtl.Price to Mask_Currency_Window
+        Set Field_Entry_msg Field OrderDtl.Price to Entering_Price
+
+        Set Field_Option Field OrderDtl.Extended_Price DD_DISPLAYONLY to True
+        Set Field_Mask_Type Field OrderDtl.Extended_Price to Mask_Currency_Window
+        
+        Set Field_Exit_msg OrderDtl.Qty_Ordered to Adjust_Display_Total
+        Set Field_Exit_msg OrderDtl.Price to Adjust_Display_Total
+
+    End_Procedure
+
+    Procedure Backout
+        Forward Send Backout
+        Send Adjust_Balances (-OrderDtl.Qty_Ordered) (-OrderDtl.Extended_Price)
+    End_Procedure
+
+    Procedure Update
+        Forward Send Update
+        Move (OrderDtl.Price * OrderDtl.Qty_Ordered) to OrderDtl.Extended_Price
+        Send Adjust_Balances OrderDtl.Qty_Ordered OrderDtl.Extended_Price
+    End_Procedure
+
+    Procedure Adjust_Balances Number Qty Number Amt
+        Subtract Qty from Invt.On_Hand
+        Add Amt to Orderhea.Order_Total
+    End_Procedure
+    
+    Procedure Adjust_Display_Total
+        Integer iQty
+        Number nAmnt
+        
+        Get Field_Current_Value Field Orderdtl.Qty_Ordered to iQty
+        Get Field_Current_Value Field Orderdtl.Price to nAmnt
+        // note we set value, but not changed state!
+        Set Field_Current_Value Field Orderdtl.Extended_Price to (nAmnt * iQty)
+    End_Procedure
+
+    Procedure Entering_Price Integer Field# Number nAmnt
+        If (nAmnt=0) Begin
+            Get File_Field_Current_Value File_Field Invt.Unit_Price to nAmnt
+            Set Field_Changed_Value Field# to nAmnt
+            Send Adjust_Display_Total
+        End    
     End_Procedure
 
 End_Class

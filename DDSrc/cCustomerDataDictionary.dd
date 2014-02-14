@@ -4,17 +4,20 @@ Open Customer
 Open OrderHea
 Open OrdSys
 
+Object Customer_State_VT is a CodeValidationTable
+    Set Type_Value to "STATES"
+    Set Allow_Blank_State to True
+End_Object
+
 Class cCustomerDataDictionary is a DataDictionary
     
     Procedure Construct_Object
         Forward Send Construct_Object
         Set Main_file to Customer.File_Number
 
-        Set Add_System_File to OrdSys.File_Number DD_Lock_On_All
+        Set Add_System_File to OrdSys.File_Number DD_Lock_On_New_Save
 
         Set Add_Client_File to OrderHea.File_Number
-
-        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
         Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
@@ -26,6 +29,7 @@ Class cCustomerDataDictionary is a DataDictionary
 
         Set Field_Option Field Customer.State DD_CAPSLOCK to True
         Set Field_Class_Name Field Customer.State to "dbComboForm"
+        Set Field_Value_Table Field Customer.State to Customer_State_VT
 
         Set Field_Mask Field Customer.Zip to "#####-####"
         Set Field_Mask_Type Field Customer.Zip to Mask_Window
@@ -40,7 +44,13 @@ Class cCustomerDataDictionary is a DataDictionary
         Set Field_Mask_Type Field Customer.Balance to Mask_Currency_Window
 
         Set Field_Checkbox_Values Field Customer.Status to "Y" "N"
+        Set Cascade_Delete_State to False
 
+    End_Procedure
+
+    Procedure Field_Defaults
+        Forward Send Field_Defaults
+        Set Field_Changed_Value Field Customer.State to "AR"
     End_Procedure
 
 End_Class

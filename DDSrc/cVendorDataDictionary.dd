@@ -2,6 +2,11 @@ Use DataDict.pkg
 
 Open Vendor
 Open Invt
+Open OrdSys
+
+Object Vendor_State_VT is a CodeValidationTable
+    Set Type_Value to "STATES"
+End_Object
 
 Class cVendorDataDictionary is a DataDictionary
     
@@ -9,12 +14,24 @@ Class cVendorDataDictionary is a DataDictionary
         Forward Send Construct_Object
         Set Main_file to Vendor.File_Number
 
-        Set Add_Client_File to Invt.File_Number
+        Set Add_System_File to OrdSys.File_Number DD_Lock_On_All
 
-        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+        Set Add_Client_File to Invt.File_Number
         Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
         Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+
+        Set Field_Option Field Vendor.Id DD_AUTOFIND to True
+        Set Field_Option Field Vendor.Id DD_NOPUT to True
+        Set Key_Field_State Field Vendor.Id to True
+        Set Field_Auto_Increment Field Vendor.Id to File_Field OrdSys.Vendor_Number
+
+        Set Field_Option Field Vendor.State DD_CAPSLOCK to True
+        Set Field_Class_Name Field Vendor.State to "dbComboForm"
+        Set Field_Value_Table Field Vendor.State to Vendor_State_VT
+
+        Set Field_Mask_Type Field Vendor.Zip to Mask_Window
+        Set Field_Mask Field Vendor.Zip to "#####-####"
 
     End_Procedure
 

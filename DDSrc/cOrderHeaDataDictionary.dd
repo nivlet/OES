@@ -4,6 +4,24 @@ Open OrderHea
 Open Customer
 Open SalesP
 Open OrderDtl
+Open OrdSys
+
+Object Terms_Table is a DescriptionValidationTable
+    Procedure Fill_List
+        Forward Send Fill_List
+        Send Add_Table_Value "NONE" "None established"
+        Send Add_Table_Value "COD" "COD"
+        Send Add_Table_Value "NET30" "Net 30"
+        Send Add_Table_Value "NET60" "Net 60"
+        Send Add_Table_Value "NET90" "Net 90"
+        Send Add_Table_Value "PREPAY" "Pre-payment required"
+    End_Procedure
+End_Object
+
+Object Ship_Table is a CodeValidationTable
+    Set Type_Value to "SHIPPING"
+    Set Allow_Blank_State to True
+End_Object
 
 Class cOrderHeaDataDictionary is a DataDictionary
     
@@ -11,16 +29,76 @@ Class cOrderHeaDataDictionary is a DataDictionary
         Forward Send Construct_Object
         Set Main_file to OrderHea.File_Number
 
+        Set Add_System_File to OrdSys.File_Number DD_Lock_On_New_Save_Delete
+
         Set Add_Client_File to OrderDtl.File_Number
 
         Set Add_Server_File to Customer.File_Number
         Set Add_Server_File to SalesP.File_Number
-
-        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
         Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
 
+        Set Field_Option Field OrderHea.Order_Number DD_AUTOFIND to True
+        Set Key_Field_State Field OrderHea.Order_Number to True
+        Set Field_Auto_Increment Field OrderHea.Order_Number to File_Field OrdSys.Order_Number
+
+        Set Field_Class_Name Field OrderHea.Order_Date to "dbSpinForm"
+        Set Field_Mask_Type Field OrderHea.Order_Date to Mask_Date_Window
+        Set Field_Entry_msg Field OrderHea.Order_Date to Entry_Order_Date
+
+        Set Field_Value_Table Field OrderHea.Terms to Terms_Table
+        Set Field_Class_Name Field OrderHea.Terms to "dbComboForm"
+
+        Set Field_Value_Table Field OrderHea.Ship_Via to Ship_Table
+        Set Field_Class_Name Field OrderHea.Ship_Via to "dbComboForm"
+
+        Set Field_Option Field OrderHea.Order_Total DD_DISPLAYONLY to True
+        Set Field_Mask_Type Field OrderHea.Order_Total to Mask_Currency_Window
+
     End_Procedure
+
+    Procedure Backout
+        Forward Send Backout
+        Send Adjust_Balances (-OrderHea.Order_Total)
+    End_Procedure
+
+    Procedure Deleting
+        Forward Send Deleting
+    End_Procedure
+
+    Procedure Update
+        Forward Send Update
+        Send Adjust_Balances OrderHea.Order_Total
+    End_Procedure
+    
+    // Add a default date if the field is blank
+    Procedure Entry_Order_Date Integer iField Date dDate
+        Integer iChanged
+
+        Get Field_Changed_State iField to iChanged
+        If (iChanged=0 and dDate=0) Begin
+            Sysdate dDate
+            Set Field_Default_Value iField to dDate
+        End
+    End_Procedure
+
+    Procedure Adjust_Balances Number Amt
+        Add Amt to Customer.Purchases
+        Add Amt to Customer.Balance
+    End_Procedure
+    
+    Procedure Deleting
+        Forward Send Deleting
+
+        // see if we can decrement the order number in sys file...can only do
+        // this if this is the newest order.
+        If (OrderHea.Order_Number=OrdSys.Order_Number) Begin // if this 
+           Decrement OrdSys.Order_Number          // the last number
+           SaveRecord OrdSys                      // decrement and save
+        End
+    End_Procedure
+
+
 
 End_Class

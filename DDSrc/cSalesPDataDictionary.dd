@@ -16,6 +16,12 @@ Class cSalesPDataDictionary is a DataDictionary
         Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
 
+        Set Field_Option Field SalesP.Id DD_AUTOFIND to True
+        Set Field_Option Field SalesP.Id DD_CAPSLOCK to True
+        Set Key_Field_State Field SalesP.Id to True
+        Set Field_Option Field SalesP.Id DD_REQUIRED to True
+        Set Cascade_Delete_State to False
+
     End_Procedure
 
 End_Class
