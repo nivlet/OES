@@ -1,0 +1,10 @@
+[Header]
+Mask=*.*
+SubDirectories=1
+Location=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\OrderTutorial\IdeSrc\philip.waller_FindInFiles.dsk
+[C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\OrderTutorial\AppSrc]
+IsEnabled=1
+[C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\OrderTutorial\DdSrc]
+IsEnabled=1
+[C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\OrderTutorial\AppHtml]
+IsEnabled=1
