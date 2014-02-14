@@ -1,0 +1,46 @@
+Use DataDict.pkg
+
+Open Customer
+Open OrderHea
+Open OrdSys
+
+Class cCustomerDataDictionary is a DataDictionary
+    
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set Main_file to Customer.File_Number
+
+        Set Add_System_File to OrdSys.File_Number DD_Lock_On_All
+
+        Set Add_Client_File to OrderHea.File_Number
+
+        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+
+        Set Field_Option Field Customer.Customer_Number DD_AUTOFIND to True
+        Set Key_Field_State Field Customer.Customer_Number to True
+        Set Field_Option Field Customer.Customer_Number DD_NOPUT to True
+        Set Field_Auto_Increment Field Customer.Customer_Number to File_Field OrdSys.Cust_Number
+
+        Set Field_Option Field Customer.State DD_CAPSLOCK to True
+        Set Field_Class_Name Field Customer.State to "dbComboForm"
+
+        Set Field_Mask Field Customer.Zip to "#####-####"
+        Set Field_Mask_Type Field Customer.Zip to Mask_Window
+
+        Set Field_Mask_Type Field Customer.Credit_Limit to Mask_Currency_Window
+        Set Field_Class_Name Field Customer.Credit_Limit to "dbSpinForm"
+
+        Set Field_Option Field Customer.Purchases DD_DISPLAYONLY to True
+        Set Field_Mask_Type Field Customer.Purchases to Mask_Currency_Window
+
+        Set Field_Option Field Customer.Balance DD_DISPLAYONLY to True
+        Set Field_Mask_Type Field Customer.Balance to Mask_Currency_Window
+
+        Set Field_Checkbox_Values Field Customer.Status to "Y" "N"
+
+    End_Procedure
+
+End_Class

@@ -1,0 +1,6 @@
+Item_Id
+Description
+Vendor_Id
+Vendor_Part_Id
+Unit_Price
+On_Hand

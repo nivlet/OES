@@ -1,0 +1,10 @@
+#REPLACE FILE4 Vendor
+#REPLACE Vendor.Recnum |FN4,0
+#REPLACE Vendor.Id |FN4,1
+#REPLACE Vendor.Name |FS4,2
+#REPLACE Vendor.Address |FS4,3
+#REPLACE Vendor.City |FS4,4
+#REPLACE Vendor.State |FS4,5
+#REPLACE Vendor.Zip |FS4,6
+#REPLACE Vendor.Phone_Number |FS4,7
+#REPLACE Vendor.Fax_Number |FS4,8

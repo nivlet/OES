@@ -1,0 +1,5 @@
+#REPLACE FILE1 OrdSys
+#REPLACE OrdSys.Recnum |FN1,0
+#REPLACE OrdSys.Order_Number |FN1,1
+#REPLACE OrdSys.Cust_Number |FN1,2
+#REPLACE OrdSys.Vendor_Number |FN1,3

@@ -1,0 +1,4 @@
+#REPLACE FILE3 SalesP
+#REPLACE SalesP.Recnum |FN3,0
+#REPLACE SalesP.Id |FS3,1
+#REPLACE SalesP.Name |FS3,2

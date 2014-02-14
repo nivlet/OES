@@ -1,0 +1,11 @@
+#REPLACE FILE5 OrderHea
+#REPLACE OrderHea.Recnum |FN5,0
+#REPLACE OrderHea.Order_Number |FN5,1
+#REPLACE OrderHea.Customer_Number |FN5,2
+#REPLACE OrderHea.Order_Date |FD5,3
+#REPLACE OrderHea.Terms |FS5,4
+#REPLACE OrderHea.Ship_Via |FS5,5
+#REPLACE OrderHea.Ordered_By |FS5,6
+#REPLACE OrderHea.Salesperson_Id |FS5,7
+#REPLACE OrderHea.Order_Total |FN5,8
+#REPLACE OrderHea.Last_Detail_Num |FN5,9

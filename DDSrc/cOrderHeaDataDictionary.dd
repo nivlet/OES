@@ -1,0 +1,26 @@
+Use DataDict.pkg
+
+Open OrderHea
+Open Customer
+Open SalesP
+Open OrderDtl
+
+Class cOrderHeaDataDictionary is a DataDictionary
+    
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set Main_file to OrderHea.File_Number
+
+        Set Add_Client_File to OrderDtl.File_Number
+
+        Set Add_Server_File to Customer.File_Number
+        Set Add_Server_File to SalesP.File_Number
+
+        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+
+    End_Procedure
+
+End_Class

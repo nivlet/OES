@@ -1,0 +1,16 @@
+#REPLACE FILE2 Customer
+#REPLACE Customer.Recnum |FN2,0
+#REPLACE Customer.Customer_Number |FN2,1
+#REPLACE Customer.Name |FS2,2
+#REPLACE Customer.Address |FS2,3
+#REPLACE Customer.City |FS2,4
+#REPLACE Customer.State |FS2,5
+#REPLACE Customer.Zip |FS2,6
+#REPLACE Customer.Phone_Number |FS2,7
+#REPLACE Customer.Fax_Number |FS2,8
+#REPLACE Customer.Email_Address |FS2,9
+#REPLACE Customer.Credit_Limit |FN2,10
+#REPLACE Customer.Purchases |FN2,11
+#REPLACE Customer.Balance |FN2,12
+#REPLACE Customer.Comments |FS2,13
+#REPLACE Customer.Status |FS2,14

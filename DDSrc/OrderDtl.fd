@@ -1,0 +1,8 @@
+#REPLACE FILE7 OrderDtl
+#REPLACE OrderDtl.Recnum |FN7,0
+#REPLACE OrderDtl.Order_Number |FN7,1
+#REPLACE OrderDtl.Detail_Number |FN7,2
+#REPLACE OrderDtl.Item_Id |FS7,3
+#REPLACE OrderDtl.Qty_Ordered |FN7,4
+#REPLACE OrderDtl.Price |FN7,5
+#REPLACE OrderDtl.Extended_Price |FN7,6
