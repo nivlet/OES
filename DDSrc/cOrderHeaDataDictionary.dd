@@ -99,8 +99,6 @@ Class cOrderHeaDataDictionary is a DataDictionary
         End
     End_Procedure
 
-
-
 End_Class
 
 #IFDEF Is$WebApp

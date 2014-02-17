@@ -735,7 +735,7 @@ Including file: oDEOEditContextMenu.pkg    (C:\Program Files (x86)\Visual DataFl
 70021>                Set psDescription to "Available Views"
 70022>
 70022>                Object ooCustomerViewMenuItem is a cCJMenuItem
-70024>                    Set psCaption to "oCustomerView"
+70024>                    Set psCaption to "Customer View"
 70025>                    Set psTooltip to "oCustomerView"
 70026>                
 70026>                    Procedure OnExecute Variant vCommandBarControl
@@ -2845,8 +2845,6 @@ Including file: cOrderHeaDataDictionary.dd    (C:\Users\philip.waller\Documents\
 71712>>>>>        End
 71712>>>>>>
 71712>>>>>    End_Procedure
-71713>>>>>
-71713>>>>>
 71713>>>>>
 71713>>>>>End_Class
 71714>>>>>

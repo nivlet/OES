@@ -93,7 +93,7 @@ Object oMain is a Panel
                 Set psDescription to "Available Views"
 
                 Object ooCustomerViewMenuItem is a cCJMenuItem
-                    Set psCaption to "oCustomerView"
+                    Set psCaption to "Customer View"
                     Set psTooltip to "oCustomerView"
                 
                     Procedure OnExecute Variant vCommandBarControl

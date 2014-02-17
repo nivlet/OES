@@ -6,33 +6,64 @@ GroupCount=1
 HorizontalGroups=1
 [TabGroup0]
 GroupSize=40
-SelectedTab=2
+SelectedTab=4
 [Window0]
-Filename=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\PPW OrderTutorial\AppSrc\Order.src
-ViewType=2
+Filename=OrderDtl
+ViewType=4
 Top=22
 Left=2
-Bottom=927
-Right=1442
-TabIndex=1
-TabGroup=0
-[Window1]
-Filename=Start Center
-ViewType=100
-Top=22
-Left=2
-Bottom=927
-Right=1442
+Bottom=761
+Right=1520
 TabIndex=0
 TabGroup=0
+[Window1]
+Filename=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\PPW OrderTutorial\DdSrc\cOrderDtlDataDictionary.dd
+ViewType=1
+Top=22
+Left=2
+Bottom=761
+Right=1520
+CursorLine=44
+CursorColumn=0
+TabIndex=1
+TabGroup=0
 [Window2]
+Filename=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\PPW OrderTutorial\AppSrc\OrderEntryView.vw
+ViewType=1
+Top=22
+Left=2
+Bottom=761
+Right=1520
+CursorLine=319
+CursorColumn=0
+TabIndex=3
+TabGroup=0
+[Window3]
 Filename=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\PPW OrderTutorial\DdSrc\cOrderHeaDataDictionary.dd
 ViewType=1
 Top=22
 Left=2
-Bottom=927
-Right=1442
-CursorLine=99
-CursorColumn=9
+Bottom=761
+Right=1520
+CursorLine=72
+CursorColumn=0
 TabIndex=2
+TabGroup=0
+[Window4]
+Filename=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\PPW OrderTutorial\AppSrc\CustomerView.vw
+ViewType=2
+Top=22
+Left=2
+Bottom=761
+Right=1520
+TabIndex=5
+TabGroup=0
+[Window5]
+Filename=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\PPW OrderTutorial\AppSrc\Order.src
+ViewType=2
+Top=22
+Left=2
+Bottom=761
+Right=1520
+TabIndex=4
 TabGroup=0
