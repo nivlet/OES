@@ -23,6 +23,8 @@ Object Ship_Table is a CodeValidationTable
     Set Allow_Blank_State to True
 End_Object
 
+Register_Object OrderHea_sl
+
 Class cOrderHeaDataDictionary is a DataDictionary
     
     Procedure Construct_Object
@@ -42,10 +44,12 @@ Class cOrderHeaDataDictionary is a DataDictionary
         Set Field_Option Field OrderHea.Order_Number DD_AUTOFIND to True
         Set Key_Field_State Field OrderHea.Order_Number to True
         Set Field_Auto_Increment Field OrderHea.Order_Number to File_Field OrdSys.Order_Number
+        Set Field_Prompt_Object Field OrderHea.Order_Number to OrderHea_sl
 
         Set Field_Class_Name Field OrderHea.Order_Date to "dbSpinForm"
         Set Field_Mask_Type Field OrderHea.Order_Date to Mask_Date_Window
         Set Field_Entry_msg Field OrderHea.Order_Date to Entry_Order_Date
+        Set Field_Prompt_Object Field OrderHea.Order_Date to OrderHea_sl
 
         Set Field_Value_Table Field OrderHea.Terms to Terms_Table
         Set Field_Class_Name Field OrderHea.Terms to "dbComboForm"
@@ -61,10 +65,6 @@ Class cOrderHeaDataDictionary is a DataDictionary
     Procedure Backout
         Forward Send Backout
         Send Adjust_Balances (-OrderHea.Order_Total)
-    End_Procedure
-
-    Procedure Deleting
-        Forward Send Deleting
     End_Procedure
 
     Procedure Update
@@ -102,3 +102,8 @@ Class cOrderHeaDataDictionary is a DataDictionary
 
 
 End_Class
+
+#IFDEF Is$WebApp
+#ELSE
+Use OrderHea.sl
+#ENDIF

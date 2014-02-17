@@ -3,6 +3,8 @@ Use DataDict.pkg
 Open SalesP
 Open OrderHea
 
+Register_Object SalesP_sl
+
 Class cSalesPDataDictionary is a DataDictionary
     
     Procedure Construct_Object
@@ -20,8 +22,16 @@ Class cSalesPDataDictionary is a DataDictionary
         Set Field_Option Field SalesP.Id DD_CAPSLOCK to True
         Set Key_Field_State Field SalesP.Id to True
         Set Field_Option Field SalesP.Id DD_REQUIRED to True
+        Set Field_Prompt_Object Field SalesP.ID to SalesP_sl
+
+        Set Field_Prompt_Object Field SalesP.Name to SalesP_sl
         Set Cascade_Delete_State to False
 
     End_Procedure
 
 End_Class
+
+#IFDEF Is$WebApp
+#ELSE
+Use SalesP.sl
+#ENDIF

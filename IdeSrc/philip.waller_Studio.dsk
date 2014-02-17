@@ -1,27 +1,38 @@
 [Workspace]
 CurrentProject=Order.src
-Location=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\OrderTutorial\IdeSrc\philip.waller_Studio.dsk
+Location=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\PPW OrderTutorial\IdeSrc\philip.waller_Studio.dsk
 [TabWindows]
 GroupCount=1
 HorizontalGroups=1
 [TabGroup0]
 GroupSize=40
-SelectedTab=1
+SelectedTab=2
 [Window0]
-Filename=OrderDtl
-ViewType=4
+Filename=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\PPW OrderTutorial\AppSrc\Order.src
+ViewType=2
+Top=22
+Left=2
+Bottom=927
+Right=1442
+TabIndex=1
+TabGroup=0
+[Window1]
+Filename=Start Center
+ViewType=100
 Top=22
 Left=2
 Bottom=927
 Right=1442
 TabIndex=0
 TabGroup=0
-[Window1]
-Filename=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\OrderTutorial\DdSrc\cOrderDtlDataDictionary.dd
-ViewType=3
+[Window2]
+Filename=C:\Users\philip.waller\Documents\Training\Assignments\Day 9 021414\PPW OrderTutorial\DdSrc\cOrderHeaDataDictionary.dd
+ViewType=1
 Top=22
 Left=2
 Bottom=927
 Right=1442
-TabIndex=1
+CursorLine=99
+CursorColumn=9
+TabIndex=2
 TabGroup=0

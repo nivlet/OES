@@ -1,6 +1,6 @@
-Item_Id
+Item_ID
 Description
-Vendor_Id
-Vendor_Part_Id
+Vendor_ID
+Vendor_Part_ID
 Unit_Price
 On_Hand

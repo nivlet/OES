@@ -4,6 +4,8 @@ Open Invt
 Open Vendor
 Open OrderDtl
 
+Register_Object Invt_sl
+
 Class cInvtDataDictionary is a DataDictionary
     
     Procedure Construct_Object
@@ -22,6 +24,9 @@ Class cInvtDataDictionary is a DataDictionary
         Set Field_Option Field Invt.Item_Id DD_AUTOFIND to True
         Set Field_Option Field Invt.Item_Id DD_CAPSLOCK to True
         Set Key_Field_State Field Invt.Item_Id to True
+        Set Field_Prompt_Object Field Invt.Item_ID to Invt_sl
+
+        Set Field_Prompt_Object Field Invt.Description to Invt_sl
 
         Set Field_Option Field Invt.Vendor_Id DD_CAPSLOCK to True
 
@@ -46,3 +51,8 @@ Class cInvtDataDictionary is a DataDictionary
     End_Function
 
 End_Class
+
+#IFDEF Is$WebApp
+#ELSE
+Use Invt.sl
+#ENDIF

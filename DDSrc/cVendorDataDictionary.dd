@@ -8,6 +8,8 @@ Object Vendor_State_VT is a CodeValidationTable
     Set Type_Value to "STATES"
 End_Object
 
+Register_Object Vendor_sl
+
 Class cVendorDataDictionary is a DataDictionary
     
     Procedure Construct_Object
@@ -25,6 +27,9 @@ Class cVendorDataDictionary is a DataDictionary
         Set Field_Option Field Vendor.Id DD_NOPUT to True
         Set Key_Field_State Field Vendor.Id to True
         Set Field_Auto_Increment Field Vendor.Id to File_Field OrdSys.Vendor_Number
+        Set Field_Prompt_Object Field Vendor.ID to Vendor_sl
+
+        Set Field_Prompt_Object Field Vendor.Name to Vendor_sl
 
         Set Field_Option Field Vendor.State DD_CAPSLOCK to True
         Set Field_Class_Name Field Vendor.State to "dbComboForm"
@@ -36,3 +41,8 @@ Class cVendorDataDictionary is a DataDictionary
     End_Procedure
 
 End_Class
+
+#IFDEF Is$WebApp
+#ELSE
+Use Vendor.sl
+#ENDIF

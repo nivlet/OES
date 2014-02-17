@@ -9,6 +9,8 @@ Object Customer_State_VT is a CodeValidationTable
     Set Allow_Blank_State to True
 End_Object
 
+Register_Object Customer_sl
+
 Class cCustomerDataDictionary is a DataDictionary
     
     Procedure Construct_Object
@@ -26,6 +28,9 @@ Class cCustomerDataDictionary is a DataDictionary
         Set Key_Field_State Field Customer.Customer_Number to True
         Set Field_Option Field Customer.Customer_Number DD_NOPUT to True
         Set Field_Auto_Increment Field Customer.Customer_Number to File_Field OrdSys.Cust_Number
+        Set Field_Prompt_Object Field Customer.Customer_Number to Customer_sl
+
+        Set Field_Prompt_Object Field Customer.Name to Customer_sl
 
         Set Field_Option Field Customer.State DD_CAPSLOCK to True
         Set Field_Class_Name Field Customer.State to "dbComboForm"
@@ -54,3 +59,8 @@ Class cCustomerDataDictionary is a DataDictionary
     End_Procedure
 
 End_Class
+
+#IFDEF Is$WebApp
+#ELSE
+Use Customer.sl
+#ENDIF

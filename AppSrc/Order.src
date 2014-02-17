@@ -87,17 +87,83 @@ Object oMain is a Panel
             End_Object
 
             Object oViewMenu is a cCJMenuItem
-                Set peControlType to xtpControlPopup          
+                Set peControlType to xtpControlPopup
                 Set psCaption to "&View"
                 Set psToolTip to "View"
                 Set psDescription to "Available Views"
+
+                Object ooCustomerViewMenuItem is a cCJMenuItem
+                    Set psCaption to "oCustomerView"
+                    Set psTooltip to "oCustomerView"
+                
+                    Procedure OnExecute Variant vCommandBarControl
+                        Handle hoClient
+                        Get Client_Id to hoClient
+                        Send Activate_oCustomerView of hoClient
+                    End_Procedure
+                End_Object
+
+                Object oSalesPersonEntryViewMenuItem is a cCJMenuItem
+                    Set psCaption to "Sales Person Entry View"
+                    Set psTooltip to "Sales Person Entry View"
+                
+                    Procedure OnExecute Variant vCommandBarControl
+                        Handle hoClient
+                        Get Client_Id to hoClient
+                        Send Activate_oSalesPersonView of hoClient
+                    End_Procedure
+                End_Object
+
+                Object oVendorEntryViewMenuItem is a cCJMenuItem
+                    Set psCaption to "Vendor Entry View"
+                    Set psTooltip to "Vendor Entry View"
+                
+                    Procedure OnExecute Variant vCommandBarControl
+                        Handle hoClient
+                        Get Client_Id to hoClient
+                        Send Activate_oVendorView of hoClient
+                    End_Procedure
+                End_Object
+
+                Object oInventoryItemViewMenuItem is a cCJMenuItem
+                    Set psCaption to "Inventory Item View"
+                    Set psTooltip to "Inventory Item View"
+                
+                    Procedure OnExecute Variant vCommandBarControl
+                        Handle hoClient
+                        Get Client_Id to hoClient
+                        Send Activate_oInventoryView of hoClient
+                    End_Procedure
+                End_Object
+
+                Object oOrderEntryViewMenuItem is a cCJMenuItem
+                    Set psCaption to "Order Entry View"
+                    Set psTooltip to "Order Entry View"
+                
+                    Procedure OnExecute Variant vCommandBarControl
+                        Handle hoClient
+                        Get Client_Id to hoClient
+                        Send Activate_oOrderEntryView of hoClient
+                    End_Procedure
+                End_Object
             End_Object
             
             Object oReportMenu is a cCJMenuItem
-                Set peControlType to xtpControlPopup          
+                Set peControlType to xtpControlPopup
                 Set psCaption to "&Report"
                 Set psToolTip to "Report"
                 Set psDescription to "Available Reports"
+
+                Object oCustomerListingWinPrint2MenuItem is a cCJMenuItem
+                    Set psCaption to "Customer Listing (WinPrint 2)"
+                    Set psTooltip to "Customer Listing (WinPrint 2)"
+                
+                    Procedure OnExecute Variant vCommandBarControl
+                        Handle hoClient
+                        Get Client_Id to hoClient
+                        Send Activate_oCustomerReport of hoClient
+                    End_Procedure
+                End_Object
             End_Object
 
             Object oNavigateMenu is a cCJMenuItem
@@ -273,6 +339,12 @@ Object oMain is a Panel
 
     Object oClientArea is a ClientArea
         Use StdAbout.pkg
+        Use CustomerView.vw
+        Use SalesPersonView.vw
+        Use VendorView.vw
+        Use InventoryView.vw
+        Use OrderEntryView.vw
+        Use CustomerReport.rv
 
         Procedure Activate_About
             Send DoAbout "" "" "" "" ""
